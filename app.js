@@ -26,15 +26,13 @@ const { register } = require('module');
 
 const DB_URL = process.env.DB_URL;
 
-mongoose.connect(DB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    ssl: true,
-}).then(() => {
-    console.log('Connection to MongoDB established');
-}).catch((err) => {
-    console.error('Connection error', err);
-});
+mongoose.connect(DB_URL)
+    .then(()=>{
+        console.log("MONGO CONNECTION OPEN");
+    })
+    .catch(err=>{
+        console.log("MONGO ERROR:",err);
+    })
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error"));

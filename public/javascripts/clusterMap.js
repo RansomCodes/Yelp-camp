@@ -3,11 +3,10 @@ maptilersdk.config.apiKey = maptilerApiKey;
 const map = new maptilersdk.Map({
     container: 'map',
     style: maptilersdk.MapStyle.BRIGHT,
-    center: [-103.59179687498357, 40.66995747013945],
+    center: [80.2300, 20.6100],
     zoom: 3
 });
 
-console.log(campgrounds);
 map.on('load', function () {
     map.addSource('campgrounds', {
         type: 'geojson',
@@ -90,7 +89,6 @@ map.on('load', function () {
     // description HTML from its properties.
     map.on('click', 'unclustered-point', function (e) {
         const { PopUpMarkUp } = e.features[0].properties;
-        console.log(e.features[0].properties);
         const coordinates = e.features[0].geometry.coordinates.slice();
 
         // Ensure that if the map is zoomed out such that
